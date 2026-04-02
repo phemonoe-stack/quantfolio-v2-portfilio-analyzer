@@ -1,2 +1,5 @@
-# quantfolio-v2-portfilio-analyzer
-First second attempt at building a portfolio analyzer. 
+# Quantfolio V0.2
+First second attempt at building a portfolio analyzer.
+
+View output:
+https://htmlpreview.github.io/?https://github.com/phemonoe-stack/quantfolio-v2-portfilio-analyzer/blob/main/portfolio_report%204.2.26.html
