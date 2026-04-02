@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/Wilgan/Desktop/portfolio_report%204.2.26.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio Analyzer</title>
+<script src="./Portfolio Analyzer_files/chart.umd.min.js.download"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a18;font-size:15px;line-height:1.6}
+.page{max-width:1140px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:24px;font-weight:500;margin-bottom:4px}
+.subtitle{font-size:13px;color:#888;margin-bottom:2rem}
+h2{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#888;margin:2rem 0 .75rem;border-top:.5px solid #e0dfd8;padding-top:1.5rem}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:.75rem}
+.metric{background:#fff;border:.5px solid #e0dfd8;border-radius:10px;padding:.75rem 1rem}
+.metric .lbl{font-size:12px;color:#888;margin-bottom:3px}
+.metric .val{font-size:20px;font-weight:500}
+.metric .sub{font-size:11px;color:#aaa;margin-top:2px}
+.pos{color:#1D9E75}.neg{color:#D85A30}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.25rem}
+.box{background:#fff;border:.5px solid #e0dfd8;border-radius:12px;padding:1rem;margin-bottom:1.25rem}
+.box-title{font-size:13px;font-weight:500;margin-bottom:.75rem}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px;font-size:12px;color:#888}
+.legend span{display:flex;align-items:center;gap:4px}
+.ld{width:10px;height:10px;border-radius:2px;display:inline-block}
+table{width:100%;font-size:13px;border-collapse:collapse}
+th{text-align:left;font-weight:500;font-size:12px;color:#888;padding:7px 8px;border-bottom:1px solid #eee;white-space:nowrap}
+td{padding:6px 8px;border-bottom:.5px solid #f0efe8;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.tbl-wrap{background:#fff;border:.5px solid #e0dfd8;border-radius:12px;overflow:hidden;margin-bottom:1.25rem}
+.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap}
+.pill-pos{background:#E1F5EE;color:#0F6E56}
+.pill-neg{background:#FAECE7;color:#993C1D}
+.urg-red{background:#FAECE7;color:#993C1D}
+.urg-amber{background:#faeeda;color:#854F0B}
+.urg-green{background:#E1F5EE;color:#0F6E56}
+.alert{background:#FAECE7;border:.5px solid #f0b0a0;border-radius:10px;padding:.75rem 1rem;margin-bottom:.75rem;font-size:13px;color:#993C1D}
+.alert strong{font-weight:500}
+.hhi-bar{height:12px;border-radius:4px;background:linear-gradient(to right,#1D9E75 0%,#BA7517 40%,#D85A30 100%);position:relative;margin:8px 0}
+.hhi-needle{position:absolute;top:-4px;width:3px;height:20px;background:#1a1a18;border-radius:2px;transform:translateX(-50%)}
+.realized-banner{background:#EAF3FF;border:.5px solid #b0ccf0;border-radius:10px;padding:.75rem 1rem;margin-bottom:.75rem;font-size:13px;color:#185FA5}
+@media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr)}.charts-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<h1>Portfolio Analyzer</h1>
+<p class="subtitle">Generated Apr 02, 2026 09:38 PM &nbsp;·&nbsp; Positions.csv</p>
+
+
+
+<h2>Summary</h2>
+<div class="metrics">
+  <div class="metric"><div class="lbl">Total portfolio</div><div class="val">$90,506.41</div></div>
+  <div class="metric"><div class="lbl">Equity value</div><div class="val">$19,166.53</div></div>
+  <div class="metric"><div class="lbl">Cash &amp; MM</div><div class="val">$71,339.88</div></div>
+  <div class="metric"><div class="lbl">Today's P&amp;L</div><div class="val pos">$174.74</div></div>
+</div>
+<div class="metrics">
+  <div class="metric"><div class="lbl">Best today</div><div class="val pos">KOPN +8.44%</div></div>
+  <div class="metric"><div class="lbl">Worst today</div><div class="val neg">ONDS -2.55%</div></div>
+  <div class="metric"><div class="lbl">Best all-time</div><div class="val pos">ASTS +1453.41%</div></div>
+  <div class="metric"><div class="lbl">Worst all-time</div><div class="val neg">GME -39.10%</div></div>
+</div>
+
+<h2>Realized P&amp;L — Closed Positions</h2>
+<div class="realized-banner">
+  📄 Closed positions loaded: <strong>33</strong> trades &nbsp;·&nbsp;
+  Total realized: <strong class="pos">$3,437.30</strong> &nbsp;·&nbsp;
+  Options: <strong class="pos">$4,574.36</strong> &nbsp;·&nbsp;
+  Stocks: <strong class="neg">-$1,137.06</strong>
+</div>
+<div class="metrics">
+  <div class="metric">
+    <div class="lbl">Total realized P&amp;L</div>
+    <div class="val pos">$3,437.30</div>
+    <div class="sub">27W / 6L closed trades</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Closed batting average</div>
+    <div class="val">82%</div>
+    <div class="sub">win rate on closed positions</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Closed win/loss ratio</div>
+    <div class="val">0.41x</div>
+    <div class="sub">avg win $277 · avg loss -$672</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Combined batting avg</div>
+    <div class="val">74%</div>
+    <div class="sub">open + closed positions</div>
+  </div>
+</div>
+<div class="charts-row">
+  <div class="box">
+    <div class="box-title">Realized vs Unrealized P&amp;L ($)</div>
+    <div style="position:relative;height:160px"><canvas id="rvsu" width="592" height="200" style="display: block; box-sizing: border-box; height: 160px; width: 473px;"></canvas></div>
+  </div>
+  <div class="box">
+    <div class="box-title">Realized P&amp;L by underlying ($)</div>
+    <div style="position:relative;height:160px"><canvas id="closed-chart" width="592" height="200" style="display: block; box-sizing: border-box; height: 160px; width: 473px;"></canvas></div>
+  </div>
+</div>
+
+<h2>Open Positions — Quant Metrics</h2>
+<div class="metrics">
+  <div class="metric">
+    <div class="lbl">Batting average (open)</div>
+    <div class="val">50%</div>
+    <div class="sub">5W / 5L positions</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Win / loss ratio (open)</div>
+    <div class="val">9.77x</div>
+    <div class="sub">avg win $1,795 · avg loss -$184</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Net portfolio delta</div>
+    <div class="val pos">5.9</div>
+    <div class="sub">share-equivalent directional exposure</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Daily theta burn</div>
+    <div class="val neg">19.45</div>
+    <div class="sub">$ per day, all options combined</div>
+  </div>
+</div>
+<div class="metrics">
+  <div class="metric">
+    <div class="lbl">Portfolio vega</div>
+    <div class="val">49.06</div>
+    <div class="sub">$ gain per 1% IV rise</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Portfolio gamma</div>
+    <div class="val">172.87</div>
+    <div class="sub">delta shift per $1 underlying move</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">Short premium capture</div>
+    <div class="val neg">-30.86%</div>
+    <div class="sub">of original short premium retained</div>
+  </div>
+  <div class="metric">
+    <div class="lbl">HHI concentration</div>
+    <div class="val">2510</div>
+    <div class="sub">highly concentrated</div>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">Concentration risk — Herfindahl-Hirschman Index</div>
+  <div style="font-size:12px;color:#888;margin-bottom:4px">0 = perfectly spread &nbsp;·&nbsp; 2,500 = moderate &nbsp;·&nbsp; 10,000 = single position &nbsp;·&nbsp; yours: <strong style="color:#1a1a18">2510</strong></div>
+  <div class="hhi-bar"><div class="hhi-needle" style="left:25.1%"></div></div>
+  <div style="display:flex;justify-content:space-between;font-size:11px;color:#aaa;margin-top:2px"><span>0</span><span>2,500</span><span>5,000</span><span>10,000</span></div>
+</div>
+
+<h2>Expiration Timeline</h2>
+<div class="box">
+  <div style="display:flex;gap:16px;font-size:12px;margin-bottom:12px">
+    <span><span class="pill urg-red">≤7d</span> urgent</span>
+    <span><span class="pill urg-amber">≤21d</span> watch</span>
+    <span><span class="pill urg-green">&gt;21d</span> ok</span>
+    <span style="color:#888;margin-left:auto">sorted by DTE · right column = total P&amp;L</span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-F260417P11</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">Apr-17-2026</span><span style="width:40px"><span class="pill urg-amber" style="font-size:11px">15d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:83%;background:#BA7517;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$19.35</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-ONDS260417P8</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">Apr-17-2026</span><span style="width:40px"><span class="pill urg-amber" style="font-size:11px">15d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:83%;background:#BA7517;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$39.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-SLV260417P65</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">Apr-17-2026</span><span style="width:40px"><span class="pill urg-amber" style="font-size:11px">15d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:83%;background:#BA7517;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$60.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-ASTS260417P70</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">Apr-17-2026</span><span style="width:40px"><span class="pill urg-amber" style="font-size:11px">15d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:83%;background:#BA7517;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$152.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-RKLB260417P60</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">Apr-17-2026</span><span style="width:40px"><span class="pill urg-amber" style="font-size:11px">15d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:83%;background:#BA7517;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$211.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-RKLB260424P60</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">Apr-24-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">22d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:76%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$138.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-SWBI260515C17</span><span style="width:55px;color:#888;font-size:11px">Call</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="pos">$9.33</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-F260515C13</span><span style="width:55px;color:#888;font-size:11px">Call</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="pos">$8.65</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-PL260515P25</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$15.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-AMPX260515P13</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$17.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-ASTS260515P55</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$22.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-ONDS260515P9</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$45.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-ASTS260515C105</span><span style="width:55px;color:#888;font-size:11px">Call</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$60.67</span></div><div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500">-UMAC260515P12.5</span><span style="width:55px;color:#888;font-size:11px">Put</span><span style="width:75px;color:#888">May-15-2026</span><span style="width:40px"><span class="pill urg-green" style="font-size:11px">43d</span></span><div style="flex:1;background:#f0efe8;border-radius:4px;height:8px"><div style="width:52%;background:#1D9E75;height:8px;border-radius:4px"></div></div><span style="width:75px;text-align:right" class="neg">-$140.67</span></div></div>
+</div>
+
+<h2>Allocation</h2>
+<div class="legend" id="donut-legend"><span><span class="ld" style="background:#378ADD"></span>ASTS</span><span><span class="ld" style="background:#1D9E75"></span>F</span><span><span class="ld" style="background:#639922"></span>SPYD</span><span><span class="ld" style="background:#5DCAA5"></span>SPYD</span><span><span class="ld" style="background:#BA7517"></span>SWBI</span><span><span class="ld" style="background:#D85A30"></span>ONDS</span><span><span class="ld" style="background:#7F77DD"></span>TCNNF</span><span><span class="ld" style="background:#EF9F27"></span>EU</span><span><span class="ld" style="background:#D4537E"></span>KOPN</span><span><span class="ld" style="background:#888780"></span>GME</span></div>
+<div class="box">
+  <div class="box-title">Holdings by current value ($)</div>
+  <div style="position:relative;height:260px;max-width:500px;margin:auto"><canvas id="donut" width="625" height="325" style="display: block; box-sizing: border-box; height: 260px; width: 500px;"></canvas></div>
+</div>
+<div class="charts-row">
+  <div class="box">
+    <div class="box-title">Sector exposure ($)</div>
+    <div style="position:relative;height:230px"><canvas id="sec" width="592" height="287" style="display: block; box-sizing: border-box; height: 230px; width: 473px;"></canvas></div>
+  </div>
+  <div class="box">
+    <div class="box-title">Cost basis distance from breakeven (%)</div>
+    <div style="position:relative;height:230px"><canvas id="cbd" width="592" height="287" style="display: block; box-sizing: border-box; height: 230px; width: 473px;"></canvas></div>
+  </div>
+</div>
+
+<h2>Returns &amp; Volatility</h2>
+<div class="charts-row">
+  <div class="box">
+    <div class="box-title">Total return % by position</div>
+    <div style="position:relative;height:420px"><canvas id="bar1" width="592" height="525" style="display: block; box-sizing: border-box; height: 420px; width: 473px;"></canvas></div>
+  </div>
+  <div class="box">
+    <div class="box-title">Sharpe proxy — return ÷ 90-day vol</div>
+    <div style="font-size:12px;color:#888;margin-bottom:8px">higher = better risk-adjusted return</div>
+    <table><tbody><tr><td><strong>ASTS</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:100%;background:#1D9E75;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#1D9E75">12.31</td></tr><tr><td><strong>SPYD</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:100%;background:#1D9E75;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#1D9E75">5.32</td></tr><tr><td><strong>SPYD</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:38%;background:#1D9E75;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#1D9E75">1.89</td></tr><tr><td><strong>KOPN</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:6%;background:#1D9E75;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#1D9E75">0.30</td></tr><tr><td><strong>SWBI</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:3%;background:#1D9E75;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#1D9E75">0.13</td></tr><tr><td><strong>TCNNF</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:1%;background:#D85A30;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#D85A30">-0.07</td></tr><tr><td><strong>EU</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:2%;background:#D85A30;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#D85A30">-0.09</td></tr><tr><td><strong>ONDS</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:3%;background:#D85A30;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#D85A30">-0.15</td></tr><tr><td><strong>F</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:9%;background:#D85A30;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#D85A30">-0.43</td></tr><tr><td><strong>GME</strong></td><td style="width:55%"><div style="background:#f0efe8;border-radius:3px;height:10px"><div style="width:22%;background:#D85A30;height:10px;border-radius:3px"></div></div></td><td style="text-align:right;font-weight:500;color:#D85A30">-1.08</td></tr></tbody></table>
+  </div>
+</div>
+<div class="box">
+  <div class="box-title">30-day vs 90-day annualised volatility (%)</div>
+  <div class="legend">
+    <span><span class="ld" style="background:#378ADD"></span>30-day</span>
+    <span><span class="ld" style="background:#7F77DD"></span>90-day</span>
+  </div>
+  <div style="position:relative;height:220px"><canvas id="vol" width="1246" height="275" style="display: block; box-sizing: border-box; height: 220px; width: 996px;"></canvas></div>
+</div>
+
+<h2>Options — Greeks Dashboard</h2>
+<div class="charts-row">
+  <div class="box">
+    <div class="box-title">Net delta per position (× 100 shares)</div>
+    <div style="position:relative;height:600px"><canvas id="gk-delta" width="592" height="750" style="display: block; box-sizing: border-box; height: 600px; width: 473px;"></canvas></div>
+  </div>
+  <div class="box">
+    <div class="box-title">Net theta — daily $ decay per position</div>
+    <div style="position:relative;height:600px"><canvas id="gk-theta" width="592" height="750" style="display: block; box-sizing: border-box; height: 600px; width: 473px;"></canvas></div>
+  </div>
+</div>
+<div class="charts-row">
+  <div class="box">
+    <div class="box-title">Options total P&amp;L ($)</div>
+    <div style="position:relative;height:600px"><canvas id="bar2" width="592" height="750" style="display: block; box-sizing: border-box; height: 600px; width: 473px;"></canvas></div>
+  </div>
+  <div class="box">
+    <div class="box-title">Net vega — $ per 1% IV move per position</div>
+    <div style="position:relative;height:600px"><canvas id="gk-vega" width="592" height="750" style="display: block; box-sizing: border-box; height: 600px; width: 473px;"></canvas></div>
+  </div>
+</div>
+
+<h2>Holdings Detail</h2>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr>
+      <th>Symbol</th><th>Description</th><th>Account</th>
+      <th>Qty</th><th>Avg cost</th><th>Price</th><th>Value</th>
+      <th>Today $</th><th>Today %</th><th>Total P&amp;L $</th><th>Total %</th>
+    </tr></thead>
+    <tbody><tr><td><strong>ASTS</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">AST SPACEMOBILE INC COM CL A</td><td style="color:#888">ROTH IRA</td><td>100.0</td><td>$5.41</td><td>$83.99</td><td><strong>$8,399.00</strong></td><td class="pos">$112.00</td><td class="pos">+1.35%</td><td class="pos">$7,858.32</td><td><span class="pill pill-pos">+1453.41%</span></td></tr><tr><td><strong>F</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">FORD MTR CO DEL COM</td><td style="color:#888">ROTH IRA</td><td>301.054</td><td>$13.31</td><td>$11.68</td><td><strong>$3,516.31</strong></td><td class="pos">$42.14</td><td class="pos">+1.21%</td><td class="neg">-$489.86</td><td><span class="pill pill-neg">-12.23%</span></td></tr><tr><td><strong>SPYD</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SPDR SERIES TRUST STATE STREET PORTFOLIO S&amp;P </td><td style="color:#888">ROTH IRA</td><td>37.989</td><td>$27.72</td><td>$45.35</td><td><strong>$1,722.80</strong></td><td class="neg">-$6.46</td><td class="neg">-0.38%</td><td class="pos">$669.80</td><td><span class="pill pill-pos">+63.60%</span></td></tr><tr><td><strong>SPYD</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SPDR SERIES TRUST STATE STREET PORTFOLIO S&amp;P </td><td style="color:#888">ROTH IRA</td><td>36.091</td><td>$36.98</td><td>$45.35</td><td><strong>$1,636.72</strong></td><td class="neg">-$6.14</td><td class="neg">-0.38%</td><td class="pos">$302.03</td><td><span class="pill pill-pos">+22.62%</span></td></tr><tr><td><strong>SWBI</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SMITH &amp;WESSON BRANDS INC COM</td><td style="color:#888">ROTH IRA</td><td>100.0</td><td>$13.85</td><td>$14.77</td><td><strong>$1,477.00</strong></td><td class="pos">$44.00</td><td class="pos">+3.07%</td><td class="pos">$92.00</td><td><span class="pill pill-pos">+6.64%</span></td></tr><tr><td><strong>ONDS</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">ONDAS INC COMMON STOCK</td><td style="color:#888">ROTH IRA</td><td>100.0</td><td>$10.76</td><td>$8.81</td><td><strong>$881.00</strong></td><td class="neg">-$23.00</td><td class="neg">-2.55%</td><td class="neg">-$194.67</td><td><span class="pill pill-neg">-18.10%</span></td></tr><tr><td><strong>TCNNF</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TRULIEVE CANNABIS CORP COM NPV</td><td style="color:#888">ROTH IRA</td><td>100.0</td><td>$6.37</td><td>$5.85</td><td><strong>$584.60</strong></td><td class="pos">$30.69</td><td class="pos">+5.54%</td><td class="neg">-$52.75</td><td><span class="pill pill-neg">-8.28%</span></td></tr><tr><td><strong>EU</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">ENCORE ENERGY CORP COM NPV (POST REV SPLIT) I</td><td style="color:#888">ROTH IRA</td><td>250.0</td><td>$2.05</td><td>$1.91</td><td><strong>$477.50</strong></td><td class="pos">$27.50</td><td class="pos">+6.11%</td><td class="neg">-$35.00</td><td><span class="pill pill-neg">-6.83%</span></td></tr><tr><td><strong>KOPN</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">KOPIN CORP COM USD0.01</td><td style="color:#888">ROTH IRA</td><td>100.0</td><td>$1.93</td><td>$2.44</td><td><strong>$244.00</strong></td><td class="pos">$19.00</td><td class="pos">+8.44%</td><td class="pos">$51.50</td><td><span class="pill pill-pos">+26.75%</span></td></tr><tr><td><strong>GME</strong></td><td style="color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GAMESTOP CORPORATION COM USD0.001 CLASS A</td><td style="color:#888">ROTH IRA</td><td>10.0</td><td>$37.37</td><td>$22.76</td><td><strong>$227.60</strong></td><td class="neg">-$2.80</td><td class="neg">-1.22%</td><td class="neg">-$146.10</td><td><span class="pill pill-neg">-39.10%</span></td></tr></tbody>
+  </table>
+</div>
+
+<h2>Options &amp; Warrants — Full Greeks</h2>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr>
+      <th>Symbol</th><th>Type</th><th>Expiration</th><th>DTE</th>
+      <th>Delta</th><th>Theta</th><th>Gamma</th><th>Vega</th>
+      <th>IV</th><th>Value</th><th>Today $</th><th>Total %</th>
+    </tr></thead>
+    <tbody><tr><td><strong>-F260417P11</strong></td><td>Put</td><td>Apr-17-2026</td><td><span class="pill urg-amber">15d</span></td><td>-0.211</td><td>-0.0084</td><td>0.3112</td><td>0.0071</td><td>37.0%</td><td>$22.00</td><td class="neg">-$8.00</td><td><span class="pill pill-neg">-46.80%</span></td></tr><tr><td><strong>-ONDS260417P8</strong></td><td>Put</td><td>Apr-17-2026</td><td><span class="pill urg-amber">15d</span></td><td>-0.280</td><td>-0.0191</td><td>0.1868</td><td>0.0062</td><td>96.0%</td><td>$34.00</td><td class="pos">$0.00</td><td><span class="pill pill-neg">-53.85%</span></td></tr><tr><td><strong>-SLV260417P65</strong></td><td>Put</td><td>Apr-17-2026</td><td><span class="pill urg-amber">15d</span></td><td>-0.336</td><td>-0.1095</td><td>0.0383</td><td>0.0521</td><td>66.0%</td><td>-$235.00</td><td class="pos">$27.00</td><td><span class="pill pill-neg">-34.81%</span></td></tr><tr><td><strong>-ASTS260417P70</strong></td><td>Put</td><td>Apr-17-2026</td><td><span class="pill urg-amber">15d</span></td><td>-0.182</td><td>-0.1580</td><td>0.0138</td><td>0.0464</td><td>106.0%</td><td>$193.00</td><td class="neg">-$70.00</td><td><span class="pill pill-neg">-44.17%</span></td></tr><tr><td><strong>-RKLB260417P60</strong></td><td>Put</td><td>Apr-17-2026</td><td><span class="pill urg-amber">15d</span></td><td>-0.281</td><td>-0.1301</td><td>0.0275</td><td>0.0464</td><td>88.0%</td><td>$231.00</td><td class="neg">-$63.00</td><td><span class="pill pill-neg">-47.82%</span></td></tr><tr><td><strong>-RKLB260424P60</strong></td><td>Put</td><td>Apr-24-2026</td><td><span class="pill urg-green">22d</span></td><td>-0.303</td><td>-0.1122</td><td>0.0237</td><td>0.0575</td><td>83.0%</td><td>-$345.00</td><td class="pos">$25.00</td><td><span class="pill pill-neg">-67.21%</span></td></tr><tr><td><strong>-SWBI260515C17</strong></td><td>Call</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>0.114</td><td>-0.0039</td><td>0.1066</td><td>0.0098</td><td>28.0%</td><td>-$20.00</td><td class="pos">$0.00</td><td><span class="pill pill-pos">+31.81%</span></td></tr><tr><td><strong>-F260515C13</strong></td><td>Call</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>0.201</td><td>-0.0046</td><td>0.2003</td><td>0.0111</td><td>35.0%</td><td>-$30.00</td><td class="neg">-$2.00</td><td><span class="pill pill-pos">+22.38%</span></td></tr><tr><td><strong>-PL260515P25</strong></td><td>Put</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>-0.220</td><td>-0.0367</td><td>0.0270</td><td>0.0317</td><td>98.0%</td><td>-$180.00</td><td class="pos">$47.00</td><td><span class="pill pill-neg">-9.54%</span></td></tr><tr><td><strong>-AMPX260515P13</strong></td><td>Put</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>-0.234</td><td>-0.0191</td><td>0.0560</td><td>0.0167</td><td>96.0%</td><td>-$100.00</td><td class="pos">$5.00</td><td><span class="pill pill-neg">-21.47%</span></td></tr><tr><td><strong>-ASTS260515P55</strong></td><td>Put</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>-0.103</td><td>-0.0682</td><td>0.0053</td><td>0.0525</td><td>112.0%</td><td>-$214.00</td><td class="pos">$9.00</td><td><span class="pill pill-neg">-11.85%</span></td></tr><tr><td><strong>-ONDS260515P9</strong></td><td>Put</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>-0.448</td><td>-0.0140</td><td>0.1275</td><td>0.0121</td><td>100.0%</td><td>-$135.00</td><td class="neg">-$8.00</td><td><span class="pill pill-neg">-51.13%</span></td></tr><tr><td><strong>-ASTS260515C105</strong></td><td>Call</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>0.335</td><td>-0.1244</td><td>0.0120</td><td>0.1059</td><td>101.0%</td><td>-$580.00</td><td class="neg">-$20.00</td><td><span class="pill pill-neg">-11.69%</span></td></tr><tr><td><strong>-UMAC260515P12.5</strong></td><td>Put</td><td>May-15-2026</td><td><span class="pill urg-green">43d</span></td><td>-0.429</td><td>-0.0213</td><td>0.0812</td><td>0.0169</td><td>104.0%</td><td>-$215.00</td><td class="neg">-$4.00</td><td><span class="pill pill-neg">-189.26%</span></td></tr><tr><td><strong>GMEWS</strong></td><td>--</td><td>--</td><td><span class="pill ">--</span></td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>$3.68</td><td class="neg">-$0.19</td><td><span class="pill pill-pos">+0.00%</span></td></tr></tbody>
+  </table>
+</div>
+
+<h2>Closed Positions — 2026 Realized P&amp;L</h2>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr>
+      <th>Underlying</th><th>Type</th><th>Description</th><th>Account</th>
+      <th>Cost Basis</th><th>Proceeds</th><th>Realized G/L $</th><th>G/L %</th>
+    </tr></thead>
+    <tbody><tr><td><strong>GOSS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (GOSS) GOSSAMER BIO INC COMFEB 20 26 $1.5 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$1,002.38</td><td>$3,432.62</td><td class="pos"><strong>$2,430.24</strong></td><td><span class="pill pill-pos">+242.45%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (ASTS) AST SPACEMOBILE INC MAR 20 26 $125 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$680.67</td><td>$1,704.33</td><td class="pos"><strong>$1,023.66</strong></td><td><span class="pill pill-pos">+150.39%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ASTS) AST SPACEMOBILE INC MAR 20 26 $100 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$1,155.67</td><td>$1,799.33</td><td class="pos"><strong>$643.66</strong></td><td><span class="pill pill-pos">+55.70%</span></td></tr><tr><td><strong>PL</strong></td><td><span class="pill pill-pos" style="font-size:10px;padding:1px 5px">Long</span>&nbsp;Stock</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PLANET LABS PBC COM CL A</td><td style="color:#888">ROTH IRA</td><td>$2,467.00</td><td>$3,074.33</td><td class="pos"><strong>$607.33</strong></td><td><span class="pill pill-pos">+24.62%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (ASTS) AST SPACEMOBILE INC MAR 06 26 $115 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$165.67</td><td>$749.33</td><td class="pos"><strong>$583.66</strong></td><td><span class="pill pill-pos">+352.30%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (ASTS) AST SPACEMOBILE INC JUN 18 26 $115 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$627.67</td><td>$1,149.33</td><td class="pos"><strong>$521.66</strong></td><td><span class="pill pill-pos">+83.11%</span></td></tr><tr><td><strong>RKLB</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (RKLB) ROCKET LAB CORP COM APR 17 26 $70 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$460.67</td><td>$794.33</td><td class="pos"><strong>$333.66</strong></td><td><span class="pill pill-pos">+72.43%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ASTS) AST SPACEMOBILE INC APR 17 26 $60 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$175.67</td><td>$380.33</td><td class="pos"><strong>$204.66</strong></td><td><span class="pill pill-pos">+116.50%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ASTS) AST SPACEMOBILE INC APR 17 26 $75 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$320.67</td><td>$499.33</td><td class="pos"><strong>$178.66</strong></td><td><span class="pill pill-pos">+55.71%</span></td></tr><tr><td><strong>PL</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (PL) PLANET LABS PBC COM APR 17 26 $20 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$15.02</td><td>$139.33</td><td class="pos"><strong>$124.31</strong></td><td><span class="pill pill-pos">+827.63%</span></td></tr><tr><td><strong>PL</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (PL) PLANET LABS PBC COM MAR 20 26 $30 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$50.02</td><td>$164.33</td><td class="pos"><strong>$114.31</strong></td><td><span class="pill pill-pos">+228.53%</span></td></tr><tr><td><strong>RKLB</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (RKLB) ROCKET LAB CORP COM APR 17 26 $65 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$545.67</td><td>$651.33</td><td class="pos"><strong>$105.66</strong></td><td><span class="pill pill-pos">+19.36%</span></td></tr><tr><td><strong>PL</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (PL) PLANET LABS PBC COM MAR 20 26 $21 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$98.67</td><td>$194.33</td><td class="pos"><strong>$95.66</strong></td><td><span class="pill pill-pos">+96.95%</span></td></tr><tr><td><strong>ASTS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ASTS) AST SPACEMOBILE INC MAR 06 26 $75 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$385.67</td><td>$464.33</td><td class="pos"><strong>$78.66</strong></td><td><span class="pill pill-pos">+20.40%</span></td></tr><tr><td><strong>ONDS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ONDS) ONDAS INC COMMON APR 17 26 $10 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$95.67</td><td>$163.33</td><td class="pos"><strong>$67.66</strong></td><td><span class="pill pill-pos">+70.72%</span></td></tr><tr><td><strong>ONDS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (ONDS) ONDAS HLDGS INC COM JAN 15 27 $25 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$77.67</td><td>$137.33</td><td class="pos"><strong>$59.66</strong></td><td><span class="pill pill-pos">+76.81%</span></td></tr><tr><td><strong>ONDS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ONDS) ONDAS HLDGS INC COM FEB 06 26 $11 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$50.67</td><td>$104.33</td><td class="pos"><strong>$53.66</strong></td><td><span class="pill pill-pos">+105.90%</span></td></tr><tr><td><strong>ONDS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (ONDS) ONDAS INC COMMON MAR 13 26 $11.5 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$34.02</td><td>$84.33</td><td class="pos"><strong>$50.31</strong></td><td><span class="pill pill-pos">+147.88%</span></td></tr><tr><td><strong>GME</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (GME) GAMESTOP CORPORATIONAPR 17 26 $22 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$55.02</td><td>$89.33</td><td class="pos"><strong>$34.31</strong></td><td><span class="pill pill-pos">+62.36%</span></td></tr><tr><td><strong>F</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (F) FORD MTR CO DEL COM MAR 06 26 $14.5 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$8.02</td><td>$38.33</td><td class="pos"><strong>$30.31</strong></td><td><span class="pill pill-pos">+377.93%</span></td></tr><tr><td><strong>F</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (F) FORD MTR CO DEL COM APR 24 26 $13 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$20.05</td><td>$48.65</td><td class="pos"><strong>$28.60</strong></td><td><span class="pill pill-pos">+142.64%</span></td></tr><tr><td><strong>SPXU</strong></td><td><span class="pill pill-pos" style="font-size:10px;padding:1px 5px">Long</span>&nbsp;Stock</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PROSHARES TR ULTRAPRO SHORT S</td><td style="color:#888">ROTH IRA</td><td>$538.70</td><td>$562.80</td><td class="pos"><strong>$24.10</strong></td><td><span class="pill pill-pos">+4.47%</span></td></tr><tr><td><strong>F</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (F) FORD MTR CO DEL COM MAR 13 26 $12.5 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$18.67</td><td>$36.33</td><td class="pos"><strong>$17.66</strong></td><td><span class="pill pill-pos">+94.59%</span></td></tr><tr><td><strong>F</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (F) FORD MTR CO DEL COM MAY 15 26 $15 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$18.02</td><td>$35.33</td><td class="pos"><strong>$17.31</strong></td><td><span class="pill pill-pos">+96.06%</span></td></tr><tr><td><strong>AMPX</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (AMPX) AMPRIUS TECHNOLOGIESAPR 17 26 $13 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$18.02</td><td>$34.33</td><td class="pos"><strong>$16.31</strong></td><td><span class="pill pill-pos">+90.51%</span></td></tr><tr><td><strong>UVIX</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (UVIX) VS TRUST 2X LONG VIXAPR 17 26 $11 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$82.67</td><td>$94.33</td><td class="pos"><strong>$11.66</strong></td><td><span class="pill pill-pos">+14.10%</span></td></tr><tr><td><strong>UVIX</strong></td><td><span class="pill pill-pos" style="font-size:10px;padding:1px 5px">Long</span>&nbsp;Stock</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">VS TRUST 2X LONG VIXFUTU</td><td style="color:#888">ROTH IRA</td><td>$822.00</td><td>$833.50</td><td class="pos"><strong>$11.50</strong></td><td><span class="pill pill-pos">+1.40%</span></td></tr><tr><td><strong>UVIX</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (UVIX) VS TRUST 2X LONG VIXMAR 20 26 $8 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$65.02</td><td>$19.33</td><td class="neg"><strong>-$45.69</strong></td><td><span class="pill pill-neg">-70.27%</span></td></tr><tr><td><strong>ONDS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (ONDS) ONDAS INC COMMON MAR 06 26 $8.5 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$70.67</td><td>$0.00</td><td class="neg"><strong>-$70.67</strong></td><td><span class="pill pill-neg">-100.00%</span></td></tr><tr><td><strong>PL</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (PL) PLANET LABS PBC COM MAR 20 26 $20 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$155.67</td><td>$0.00</td><td class="neg"><strong>-$155.67</strong></td><td><span class="pill pill-neg">-100.00%</span></td></tr><tr><td><strong>GOSS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Call</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CALL (GOSS) GOSSAMER BIO INC COMMAR 20 26 $4 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$502.38</td><td>$92.62</td><td class="neg"><strong>-$409.76</strong></td><td><span class="pill pill-neg">-81.56%</span></td></tr><tr><td><strong>GOSS</strong></td><td><span class="pill pill-neg" style="font-size:10px;padding:1px 5px">Short</span>&nbsp;Put</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">PUT (GOSS) GOSSAMER BIO INC COMMAR 20 26 $1 (100 SHS)</td><td style="color:#888">ROTH IRA</td><td>$6,002.38</td><td>$4,432.62</td><td class="neg"><strong>-$1,569.76</strong></td><td><span class="pill pill-neg">-26.15%</span></td></tr><tr><td><strong>GOSS</strong></td><td><span class="pill pill-pos" style="font-size:10px;padding:1px 5px">Long</span>&nbsp;Stock</td><td style="color:#888;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GOSSAMER BIO INC COM</td><td style="color:#888">ROTH IRA</td><td>$5,779.99</td><td>$4,000.00</td><td class="neg"><strong>-$1,779.99</strong></td><td><span class="pill pill-neg">-30.80%</span></td></tr></tbody>
+  </table>
+</div>
+
+</div>
+<script>
+const C = {"donut": {"labels": ["ASTS", "F", "SPYD", "SPYD", "SWBI", "ONDS", "TCNNF", "EU", "KOPN", "GME"], "data": [8399.0, 3516.31, 1722.8, 1636.72, 1477.0, 881.0, 584.6, 477.5, 244.0, 227.6], "colors": ["#378ADD", "#1D9E75", "#639922", "#5DCAA5", "#BA7517", "#D85A30", "#7F77DD", "#EF9F27", "#D4537E", "#888780"]}, "tr": {"labels": ["ASTS", "SPYD", "KOPN", "SPYD", "SWBI", "EU", "TCNNF", "F", "ONDS", "GME"], "data": [1453.41, 63.6, 26.75, 22.62, 6.64, -6.83, -8.28, -12.23, -18.1, -39.1], "colors": ["#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30"]}, "op": {"labels": ["-SWBI260515C17", "-F260515C13", "GMEWS", "-PL260515P25", "-AMPX260515P13", "-F260417P11", "-ASTS260515P55", "-ONDS260417P8", "-ONDS260515P9", "-SLV260417P65", "-ASTS260515C105", "-RKLB260424P60", "-UMAC260515P12.5", "-ASTS260417P70", "-RKLB260417P60"], "data": [9.33, 8.65, 3.68, -15.67, -17.67, -19.35, -22.67, -39.67, -45.67, -60.67, -60.67, -138.67, -140.67, -152.67, -211.67], "colors": ["#1D9E75", "#1D9E75", "#1D9E75", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30"]}, "vol": {"labels": ["ASTS", "KOPN", "ONDS", "TCNNF", "EU", "SWBI", "F", "GME"], "vol30": [101.06, 98.7, 89.22, 75.48, 73.99, 53.22, 33.75, 26.38], "vol90": [118.1, 88.79, 118.75, 125.06, 77.83, 50.57, 28.55, 36.2]}, "greeks": {"labels": ["-ONDS260515P9", "-UMAC260515P12.5", "-SLV260417P65", "-ASTS260515C105", "-RKLB260424P60", "-RKLB260417P60", "-ONDS260417P8", "-AMPX260515P13", "-PL260515P25", "-F260417P11", "-F260515C13", "-ASTS260417P70", "-SWBI260515C17", "-ASTS260515P55"], "delta": [44.79, 42.91, 33.61, -33.52, 30.3, -28.09, -28.03, 23.42, 22.04, -42.2, -40.12, -18.19, -11.38, 10.35], "theta": [1.4, 2.13, 10.95, 12.44, 11.22, -13.01, -1.91, 1.91, 3.67, -1.68, 0.92, -15.8, 0.39, 6.82], "gamma": [12.75, 8.12, 3.83, 1.2, 2.37, 2.75, 18.68, 5.6, 2.7, 62.24, 40.06, 1.38, 10.66, 0.53], "vega": [1.21, 1.69, 5.21, 10.59, 5.75, 4.64, 0.62, 1.67, 3.17, 1.42, 2.22, 4.64, 0.98, 5.25]}, "cbd": {"labels": ["ASTS", "SPYD", "KOPN", "SPYD", "SWBI", "EU", "TCNNF", "F", "ONDS", "GME"], "data": [1452.5, 63.6, 26.42, 22.63, 6.64, -6.83, -8.23, -12.25, -18.12, -39.1], "colors": ["#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30"]}, "sec": {"labels": ["Communication services", "Consumer discretionary", "--", "Information technology", "Health care", "Energy"], "data": [8399.0, 5220.91, 3359.52, 1125.0, 584.6, 477.5], "colors": ["#378ADD", "#1D9E75", "#639922", "#5DCAA5", "#BA7517", "#D85A30"]}, "sp": {"labels": ["ASTS", "SPYD", "SPYD", "KOPN", "SWBI", "TCNNF", "EU", "ONDS", "F", "GME"], "data": [12.307, 5.322, 1.893, 0.301, 0.131, -0.066, -0.088, -0.152, -0.428, -1.08], "colors": ["#378ADD", "#378ADD", "#378ADD", "#378ADD", "#378ADD", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30"]}, "rvsu": {"labels": ["Unrealized (open)", "Realized (closed)"], "data": [8055.27, 3437.3], "colors": ["#1D9E75", "#378ADD"]}, "closed_chart": {"labels": ["ASTS", "PL", "RKLB", "ONDS", "F", "GME", "SPXU", "AMPX", "UVIX", "GOSS"], "data": [3234.62, 785.94, 439.32, 160.62, 93.88, 34.31, 24.1, 16.31, -22.53, -1329.27], "colors": ["#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#D85A30", "#D85A30"]}};
+
+function hbar(id, labels, data, colors, fmtFn) {
+  new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 3 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => fmtFn(ctx.parsed.x) } } },
+      scales: {
+        x: { ticks: { callback: v => fmtFn(v), font: { size: 11 }, color: '#888' }, grid: { color: 'rgba(0,0,0,.06)' } },
+        y: { ticks: { font: { size: 11 }, color: '#888' } }
+      }
+    }
+  });
+}
+
+// donut
+const dl = document.getElementById('donut-legend');
+C.donut.labels.forEach((l,i) => { dl.innerHTML += `<span><span class="ld" style="background:${C.donut.colors[i]}"></span>${l}</span>`; });
+new Chart(document.getElementById('donut'), {
+  type: 'doughnut',
+  data: { labels: C.donut.labels, datasets: [{ data: C.donut.data, backgroundColor: C.donut.colors, borderWidth: 2, borderColor: '#f5f5f0' }] },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' $' + ctx.parsed.toLocaleString() } } },
+    cutout: '62%' }
+});
+
+hbar('bar1', C.tr.labels, C.tr.data, C.tr.colors, v => v.toFixed(1) + '%');
+hbar('bar2', C.op.labels, C.op.data, C.op.colors, v => '$' + v.toFixed(2));
+hbar('cbd',  C.cbd.labels, C.cbd.data, C.cbd.colors, v => v.toFixed(1) + '%');
+
+// vol
+new Chart(document.getElementById('vol'), {
+  type: 'bar',
+  data: { labels: C.vol.labels, datasets: [
+    { label: '30d', data: C.vol.vol30, backgroundColor: '#378ADD', borderRadius: 3 },
+    { label: '90d', data: C.vol.vol90, backgroundColor: '#7F77DD', borderRadius: 3 }
+  ] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { font: { size: 11 }, color: '#888', autoSkip: false }, grid: { color: 'rgba(0,0,0,.06)' } },
+      y: { ticks: { callback: v => v + '%', font: { size: 11 }, color: '#888' }, grid: { color: 'rgba(0,0,0,.06)' } }
+    } }
+});
+
+// sector
+new Chart(document.getElementById('sec'), {
+  type: 'doughnut',
+  data: { labels: C.sec.labels, datasets: [{ data: C.sec.data, backgroundColor: C.sec.colors, borderWidth: 2, borderColor: '#f5f5f0' }] },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'right', labels: { font: { size: 11 }, boxWidth: 12, color: '#888' } },
+      tooltip: { callbacks: { label: ctx => ' $' + ctx.parsed.toLocaleString() } } },
+    cutout: '55%' }
+});
+
+// greeks
+hbar('gk-delta', C.greeks.labels, C.greeks.delta, C.greeks.delta.map(v => v>=0 ? '#378ADD' : '#D85A30'), v => v.toFixed(1));
+hbar('gk-theta', C.greeks.labels, C.greeks.theta, C.greeks.theta.map(v => v>=0 ? '#1D9E75' : '#D85A30'), v => '$' + v.toFixed(2));
+hbar('gk-vega',  C.greeks.labels, C.greeks.vega,  C.greeks.vega.map(() => '#7F77DD'), v => '$' + v.toFixed(2));
+
+// realized vs unrealized (vertical bar)
+new Chart(document.getElementById('rvsu'), {
+  type: 'bar',
+  data: { labels: C.rvsu.labels, datasets: [{ data: C.rvsu.data, backgroundColor: C.rvsu.colors, borderRadius: 6 }] },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y.toLocaleString(undefined,{minimumFractionDigits:2}) } } },
+    scales: {
+      x: { ticks: { font: { size: 11 }, color: '#888' } },
+      y: { ticks: { callback: v => '$' + v.toLocaleString(), font: { size: 11 }, color: '#888' }, grid: { color: 'rgba(0,0,0,.06)' } }
+    } }
+});
+
+// closed P&L by underlying (horizontal bar)
+hbar('closed-chart', C.closed_chart.labels, C.closed_chart.data, C.closed_chart.colors, v => '$' + v.toFixed(2));
+</script>
+
+</body></html>
